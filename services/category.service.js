@@ -5,6 +5,14 @@ const getAllCategories = async () => {
     return categories;
 }
 
+const getCategory = async (categoryId) => {
+    const response = await Category.findOne({
+        where: {
+            id: categoryId
+        }
+    })
+    return response;
+}
 const createCategory = async (data) => {
     const newCategory = await Category.create({
         name: data.name,
@@ -26,5 +34,6 @@ const deleteCategory = async (categoryId) => {
 module.exports = {
     getAllCategories,
     createCategory, 
-    deleteCategory
+    deleteCategory,
+    getCategory
 }

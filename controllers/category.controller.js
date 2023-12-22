@@ -1,11 +1,21 @@
 const categoryService = require('../services/category.service')
-const getCategory = async (req, res) => {
+const getAllCategories = async (req, res) => {
 
     const response = await categoryService.getAllCategories();
     return res.json({
         message: 'Successfully fetched the category',
         success: true,
         "code": 200,
+        data: response
+    })
+}
+
+const getCategory = async (req, res) => {
+    const response = await categoryService.getCategory(req.params.id)
+    return res.json({
+        message: "Successfully fetched a category",
+        success: true,
+        code: 200,
         data: response
     })
 }
@@ -31,6 +41,7 @@ const deleteCategory = async (req, res) => {
 }
 
 module.exports = {
+    getAllCategories,
     getCategory,
     createCategory, 
     deleteCategory
