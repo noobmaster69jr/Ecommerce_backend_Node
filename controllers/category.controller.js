@@ -10,6 +10,16 @@ const getCategory = async (req, res) => {
     })
 }
 
+const createCategory = async (req, res) => {
+    const response = await categoryService.createCategory(req.body)
+    return res.json({
+        message: "successfully created a new Category",
+        success: true,
+        code: 201,
+        data: response
+    })
+}
 module.exports = {
-    getCategory
+    getCategory,
+    createCategory
 }
